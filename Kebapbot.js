@@ -110,85 +110,15 @@ client.on('message', msg => {
 	}
 });
 
+// Yeni üye geldiğinde mesaj atar
 client.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find('name', 'ana-sohbet');
-  if (!channel) return;
-  let embed = new Discord.RichEmbed()
-  .setColor(Math.floor(Math.random() * (0xFFFFFF + 1)))
-  .setDescription(`${member}, Sunucuya Hoşgeldin!`)
-  .setImage("https://media.giphy.com/media/xULW8LVPCQrk0drq4E/giphy.gif")
-  channel.send(embed);
-});
-
-client.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find('name', 'sehirmeydani');
-  if (!channel) return;
-  let embed = new Discord.RichEmbed()
-  .setColor(Math.floor(Math.random() * (0xFFFFFF + 1)))
-  .setDescription(`${member}, Sunucuya Hoşgeldin!`)
-  .setImage("https://media.giphy.com/media/xULW8LVPCQrk0drq4E/giphy.gif")
-  channel.send(embed);
-});
-
-client.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find('name', 'hosgeldiniz');
-  if (!channel) return;
-  let embed = new Discord.RichEmbed()
-  .setColor(Math.floor(Math.random() * (0xFFFFFF + 1)))
-  .setDescription(`${member}, Sunucuya Hoşgeldin!`)
-  .setImage("https://media.giphy.com/media/xULW8LVPCQrk0drq4E/giphy.gif")
-  channel.send(embed);
-});
-
-client.on('guildMemberAdd', member => {
+  // O sunucuda #hosgeldin kanalını bul.
   const channel = member.guild.channels.find('name', 'hosgeldin');
+//Eğer o sunucuda #hosgedin kanalı yoksa boşver :unamused: 
   if (!channel) return;
-  let embed = new Discord.RichEmbed()
-  .setColor(Math.floor(Math.random() * (0xFFFFFF + 1)))
-  .setDescription(`${member}, Sunucuya Hoşgeldin!`)
-  .setImage("https://media.giphy.com/media/xULW8LVPCQrk0drq4E/giphy.gif")
-  channel.send(embed);
-});
-
-client.on('guildMemberRemove', member => {
-  const channel = member.guild.channels.find('name', 'hosgeldin');
-  if (!channel) return;
-  let embed = new Discord.RichEmbed()
-  .setColor(Math.floor(Math.random() * (0xFFFFFF + 1)))
-  .setDescription(`${member}, Sunucudan Ayrıldı Görüşürüz!`)
-  .setImage("https://media.giphy.com/media/3oFzm2dJ6tzcmNMFt6/giphy.gif")
-  channel.send(embed);
-});
-
-client.on('guildMemberRemove', member => {
-  const channel = member.guild.channels.find('name', 'hosgeldiniz');
-  if (!channel) return;
-  let embed = new Discord.RichEmbed()
-  .setColor(Math.floor(Math.random() * (0xFFFFFF + 1)))
-  .setDescription(`${member}, Sunucudan Ayrıldı Görüşürüz!`)
-  .setImage("https://media.giphy.com/media/3oFzm2dJ6tzcmNMFt6/giphy.gif")
-  channel.send(embed);
-});
-
-client.on('guildMemberRemove', member => {
-  const channel = member.guild.channels.find('name', 'sehirmeydani');
-  if (!channel) return;
-  let embed = new Discord.RichEmbed()
-  .setColor(Math.floor(Math.random() * (0xFFFFFF + 1)))
-  .setDescription(`${member}, Sunucudan Ayrıldı Görüşürüz!`)
-  .setImage("https://media.giphy.com/media/3oFzm2dJ6tzcmNMFt6/giphy.gif")
-  channel.send(embed);
-});
-
-client.on('guildMemberRemove', member => {
-  const channel = member.guild.channels.find('name', 'ana-sohbet');
-  if (!channel) return;
-  let embed = new Discord.RichEmbed()
-  .setColor(Math.floor(Math.random() * (0xFFFFFF + 1)))
-  .setDescription(`${member}, Sunucudan Ayrıldı Görüşürüz!`)
-  .setImage("https://media.giphy.com/media/3oFzm2dJ6tzcmNMFt6/giphy.gif")
-  channel.send(embed);
-});
+  // Kullanıcıya mesaj gönder (Etiketleyerek)
+  channel.send(`Sunucuya hoşgeldin, ${member}`);
+})
 
 client.elevation = message => {
   if(!message.guild) {
